@@ -1,0 +1,406 @@
+/* 明日方舟干员对比投票页面样式 */
+.compare-container {
+  position: fixed; /* ✅ 固定在视口 */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle, #1a1a1a, #000000); /* ✅ 更丰富的背景可选 */
+  color: white;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  z-index: 0;
+}
+
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.header h1 {
+  margin: 2rem 0 0.5rem;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  width: 100%;
+  background: linear-gradient(90deg, #ff9100, #ff6b00);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.back-button {
+  color: #ff9100;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 145, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.back-button:hover {
+  background-color: rgba(255, 145, 0, 0.1);
+  border-color: rgba(255, 145, 0, 0.5);
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* 投票部分 */
+.compare-voting {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.compare-voting h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: #eee;
+}
+
+.vote-count-info {
+  color: #999;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+}
+
+.operator-comparison {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.operator-card {
+  width: 150px;  /* ✅ 明确设定卡片宽度 */
+  max-width: 280px;
+  background-color: #222;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #333;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+.operator-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(255, 145, 0, 0.2);
+  border-color: rgba(255, 145, 0, 0.5);
+}
+
+.operator-image {
+  width: 100%;
+  height: 280px;
+  overflow: hidden;
+  position: relative;
+  background-color: #333;
+}
+
+.operator-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.operator-card:hover .operator-image img {
+  transform: scale(1.05);
+}
+
+.operator-name {
+  padding: 1rem;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #eee;
+}
+
+.vs-badge {
+  background: linear-gradient(135deg, #ff9100, #ff6b00);
+  color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.4rem;
+  box-shadow: 0 0 20px rgba(255, 145, 0, 0.5);
+  flex-shrink: 0;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.skip-button, .results-button, .personal-results-button {
+  padding: 0.7rem 1.4rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.skip-button {
+  background-color: #333;
+  color: #ccc;
+}
+
+.skip-button:hover {
+  background-color: #444;
+}
+
+.results-button {
+  background: linear-gradient(135deg, #ff9100, #ff6b00);
+  color: white;
+}
+
+.results-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(255, 145, 0, 0.3);
+}
+
+.personal-results-button {
+  background-color: rgba(255, 145, 0, 0.2);
+  color: #ff9100;
+  border: 1px solid rgba(255, 145, 0, 0.3);
+}
+
+.personal-results-button:hover {
+  background-color: rgba(255, 145, 0, 0.3);
+  border-color: rgba(255, 145, 0, 0.5);
+}
+
+/* 结果部分 */
+.compare-results {
+  width: 100%;
+  max-width: 800px;
+}
+
+.compare-results h2 {
+  font-size: 1.8rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: #eee;
+}
+
+.operators-ranking {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.rank-item {
+  display: flex;
+  align-items: center;
+  background-color: #222;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #333;
+  transition: all 0.2s ease;
+}
+
+.rank-item:hover {
+  transform: translateX(5px);
+  border-color: rgba(255, 145, 0, 0.5);
+  background-color: #282828;
+}
+
+.rank-number {
+  background: linear-gradient(135deg, #ff9100, #ff6b00);
+  color: white;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  margin: 0.5rem;
+  border-radius: 50%;
+}
+
+.rank-item .operator-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 5px;
+  margin-right: 1rem;
+  overflow: hidden;
+}
+
+.operator-info {
+  flex: 1;
+  padding: 0.7rem 1rem 0.7rem 0;
+}
+
+.operator-info h3 {
+  margin: 0 0 0.3rem 0;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.stats {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+.score {
+  color: #ff9100;
+  font-weight: 600;
+}
+
+.win-rate {
+  color: #4CAF50;
+}
+
+/* 加载和错误状态 */
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.loading-spinner {
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-top: 4px solid #ff9100;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+.loading-text {
+  color: #ddd;
+  font-size: 1.1rem;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.error-message {
+  background-color: rgba(255, 0, 0, 0.2);
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  padding: 1rem;
+  border-radius: 5px;
+  color: #ff6666;
+  margin: 1rem 0;
+  text-align: center;
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.success-message {
+  background-color: rgba(0, 255, 0, 0.1);
+  border: 1px solid rgba(0, 255, 0, 0.2);
+  padding: 1rem;
+  border-radius: 5px;
+  color: #4CAF50;
+  margin: 1rem 0;
+  text-align: center;
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: fade-in-out 1.5s ease;
+  z-index: 10;
+}
+
+@keyframes fade-in-out {
+  0% { opacity: 0; }
+  20% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+  .operator-comparison {
+    flex-wrap: wrap;
+  }
+  .operator-card {
+    flex: 1 1 300px; /* 可伸缩宽度，最小300px */
+  }
+  
+  
+  .vs-badge {
+    margin: 0.5rem 0;
+  }
+  
+  .stats {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .skip-button, .results-button, .personal-results-button {
+    width: 100%;
+  }
+} 
+
+.back-button {
+  color: #ff9100;
+  cursor: pointer;
+  font-size: 0.9rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 145, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  white-space: nowrap; /* ✅ 关键：禁止文字换行 */
+  display: inline-block;
+  flex-wrap: nowrap; /* 防止按钮组换行 */
+  align-items: center;
+}
+
+
+.fixed-back {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+}
