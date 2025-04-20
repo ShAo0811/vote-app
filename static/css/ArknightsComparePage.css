@@ -1,12 +1,13 @@
 /* 明日方舟干员对比投票页面样式 */
 .compare-container {
-  position: fixed; /* ✅ 固定在视口 */
+  position: fixed;
+  /* ✅ 固定在视口 */
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: radial-gradient(circle, #1a1a1a, #000000); /* ✅ 更丰富的背景可选 */
-  color: white;
+  background: #ffffff;
+  background-color: #ffffff;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -74,11 +75,11 @@
 .compare-voting h2 {
   font-size: 1.5rem;
   margin-bottom: 0.5rem;
-  color: #eee;
+  color: #333;
 }
 
 .vote-count-info {
-  color: #999;
+  color: #666;
   margin-bottom: 2rem;
   font-size: 0.9rem;
 }
@@ -93,9 +94,10 @@
 }
 
 .operator-card {
-  width: 150px;  /* ✅ 明确设定卡片宽度 */
+  width: 150px;
+  /* ✅ 明确设定卡片宽度 */
   max-width: 280px;
-  background-color: #222;
+  background-color: #f9f9f9;
   border-radius: 10px;
   overflow: hidden;
   border: 1px solid #333;
@@ -116,7 +118,7 @@
   height: 280px;
   overflow: hidden;
   position: relative;
-  background-color: #333;
+  background-color: #e0e0e0;
 }
 
 .operator-image img {
@@ -134,7 +136,7 @@
   padding: 1rem;
   font-weight: 600;
   font-size: 1.2rem;
-  color: #eee;
+  color: #333;
 }
 
 .vs-badge {
@@ -158,7 +160,9 @@
   margin-top: 1rem;
 }
 
-.skip-button, .results-button, .personal-results-button {
+.skip-button,
+.results-button,
+.personal-results-button {
   padding: 0.7rem 1.4rem;
   border-radius: 50px;
   font-size: 1rem;
@@ -168,7 +172,7 @@
 }
 
 .skip-button {
-  background-color: #333;
+  background-color: #e0e0e0;
   color: #ccc;
 }
 
@@ -207,7 +211,7 @@
   font-size: 1.8rem;
   text-align: center;
   margin-bottom: 0.5rem;
-  color: #eee;
+  color: #333;
 }
 
 .operators-ranking {
@@ -220,7 +224,7 @@
 .rank-item {
   display: flex;
   align-items: center;
-  background-color: #222;
+  background-color: #f9f9f9;
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid #333;
@@ -230,7 +234,7 @@
 .rank-item:hover {
   transform: translateX(5px);
   border-color: rgba(255, 145, 0, 0.5);
-  background-color: #282828;
+  background-color: #f5f5f5;
 }
 
 .rank-number {
@@ -313,8 +317,13 @@
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .error-message {
@@ -347,10 +356,21 @@
 }
 
 @keyframes fade-in-out {
-  0% { opacity: 0; }
-  20% { opacity: 1; }
-  80% { opacity: 1; }
-  100% { opacity: 0; }
+  0% {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
 }
 
 /* 响应式调整 */
@@ -358,29 +378,33 @@
   .operator-comparison {
     flex-wrap: wrap;
   }
+
   .operator-card {
-    flex: 1 1 300px; /* 可伸缩宽度，最小300px */
+    flex: 1 1 300px;
+    /* 可伸缩宽度，最小300px */
   }
-  
-  
+
+
   .vs-badge {
     margin: 0.5rem 0;
   }
-  
+
   .stats {
     flex-direction: column;
     gap: 0.3rem;
   }
-  
+
   .action-buttons {
     flex-direction: column;
     width: 100%;
   }
-  
-  .skip-button, .results-button, .personal-results-button {
+
+  .skip-button,
+  .results-button,
+  .personal-results-button {
     width: 100%;
   }
-} 
+}
 
 .back-button {
   color: #ff9100;
@@ -391,9 +415,11 @@
   border: 1px solid rgba(255, 145, 0, 0.3);
   background-color: rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
-  white-space: nowrap; /* ✅ 关键：禁止文字换行 */
+  white-space: nowrap;
+  /* ✅ 关键：禁止文字换行 */
   display: inline-block;
-  flex-wrap: nowrap; /* 防止按钮组换行 */
+  flex-wrap: nowrap;
+  /* 防止按钮组换行 */
   align-items: center;
 }
 
@@ -403,4 +429,29 @@
   top: 20px;
   left: 20px;
   z-index: 100;
+}
+
+/* 顶部和底部浅灰装饰背景块 */
+.compare-container::before,
+.compare-container::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 20vh;
+    z-index: -1;
+    background: #f5f5f5;
+    opacity: 0.5;
+}
+
+/* 顶部背景：浅灰渐变到白色 */
+.compare-container::before {
+    top: 0;
+    background: linear-gradient(to bottom, #cccccc, #ffffff);
+}
+
+/* 底部背景：浅灰渐变到白色 */
+.compare-container::after {
+    bottom: 0;
+    background: linear-gradient(to top, #cccccc, #ffffff);
 }

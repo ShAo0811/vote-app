@@ -4,6 +4,7 @@ import HomePage from './pages/HomePage';
 import ArknightsPage from './pages/Arknights/ArknightsPage';
 import ArknightsComparePage from './pages/Arknights/ArknightsComparePage';
 import './App.css';
+import '../static/css/responsive.css';
 
 function App() {
   return (

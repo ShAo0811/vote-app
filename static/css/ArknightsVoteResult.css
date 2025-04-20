@@ -1,9 +1,9 @@
 .vote-results {
     margin-top: 30px;
     padding: 20px;
-    background-color: white;
+    background: linear-gradient(to bottom, #ffffff, #f9f9f9);
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   }
   
   .vote-results h2 {
