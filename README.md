@@ -1,39 +1,103 @@
+
 # vote-app
 
-## 项目介绍
-这是一个基于React和Vite构建的投票应用程序。
+##  项目简介
+这是一个基于 React + Flask 构建的全栈投票应用，支持用户对干员进行强度投票，并实时展示结果排行。
 
-## 技术架构
-- React 19
-- Vite 6
-- 现代JavaScript (ES6+)
+- 前端：React + Vite 构建单页应用，支持快速开发与打包部署
+- 后端：Flask 提供投票、结果、干员数据等接口
+- 数据存储：使用 Python `pickle` 持久化投票数据
+- 支持本地开发 / ngrok 外部共享 / 一体化部署
 
-## 安装教程
-1. 克隆仓库
-   ```
-   git clone https://gitee.com/zhen-you-gao-tou-ba/vote-app.git
-   ```
-2. 安装依赖
-   ```
-   npm install
-   ```
-3. 启动开发服务器
-   ```
-   npm run dev
-   ```
+---
 
-## 使用说明
-1. 开发环境下，访问 http://localhost:5173 (或终端显示的端口)
-2. 生产环境构建: `npm run build`
-3. 预览生产构建: `npm run preview`
+##  技术栈
 
-## 参与贡献
-1. Fork 本仓库
-2. 新建分支 
-3. 提交代码
-4. 新建 Pull Request
+| 层级 | 工具 |
+|------|------|
+| 前端 | React 18+, Vite, JavaScript ES6+ |
+| 后端 | Python 3.9+, Flask, Flask-CORS |
+| 存储 | `pickle` 文件持久化（支持替换为数据库） |
 
-## 其他资源
-- [Gitee 官方博客](https://blog.gitee.com)
-- [探索优秀开源项目](https://gitee.com/explore)
-- [Gitee 使用手册](https://gitee.com/help)
+---
+
+##  本地运行指南
+
+### 1️⃣ 克隆项目
+
+```bash
+git clone https://gitee.com/zhen-you-gao-tou-ba/vote-app.git
+cd vote-app
+```
+
+### 2️⃣ 安装前端依赖
+
+```bash
+cd frontend
+npm install
+```
+
+### 3️⃣ 启动前端开发服务器
+
+```bash
+npm run dev
+# 默认运行于 http://localhost:5173
+```
+
+### 4️⃣ 启动后端 Flask 服务
+
+```bash
+cd ../backend
+pip install -r requirements.txt
+python app.py
+# 默认运行于 http://localhost:9876
+```
+
+---
+
+##  对外共享开发环境（可选）
+
+使用 [ngrok](https://ngrok.com/) 暴露本地服务：
+
+```bash
+ngrok http 5173  # 共享前端页面
+ngrok http 9876  # 共享 Flask 后端接口
+```
+
+确保前端 `.env` 配置中 `VITE_BACKEND_URL` 指向你后端 ngrok 地址。
+
+---
+
+##  项目结构
+
+```
+vote-app/
+├── frontend/        # React 前端项目（使用 Vite）
+│   ├── src/
+│   ├── public/
+│   └── vite.config.js
+├── backend/         # Flask 后端项目
+│   ├── app.py
+│   ├── arknights/   # 后端模块目录
+│   │   ├── routes.py
+│   │   └── data/    # 投票分数数据文件（.pickle）
+├── README.md
+```
+
+---
+
+##  开发建议与贡献流程
+
+1. Fork 本项目
+2. 创建分支（建议命名为 feature/xxx）
+3. 开发并提交代码
+4. 提交 Pull Request 进行合并
+
+---
+
+##  相关资源
+
+- [React 官方文档](https://reactjs.org/)
+- [Vite 官方文档](https://vitejs.dev/)
+- [Flask 官方文档](https://flask.palletsprojects.com/)
+- [ngrok 官方文档](https://ngrok.com/docs)
