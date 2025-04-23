@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../../../static/css/ArknightsPage.css';
-import ArknightsLogo from '../../../components/Arknights/ArknightsLogo.jsx';
+import '../../static/css/ArknightsPage.css';
+import ArknightsLogo from '../../../../components/Arknights/ArknightsLogo.jsx';
 
 const ArknightsPage = () => {
   const navigate = useNavigate();
