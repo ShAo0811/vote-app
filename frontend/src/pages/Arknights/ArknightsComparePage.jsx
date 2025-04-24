@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import '../../static/css/ArknightsComparePage.css';
 import { useNavigate } from 'react-router-dom';
+import '../../static/css/ArknightsComparePage.css';
 
 function ArknightsComparePage() {
-  const navigate = useNavigate();
   const [config, setConfig] = useState(null);
   const [pair, setPair] = useState([]);
   const [results, setResults] = useState(null);
@@ -13,6 +12,7 @@ function ArknightsComparePage() {
   const [loading, setLoading] = useState(true);
   const [successMessage, setSuccessMessage] = useState(null);
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const fetchPair = async () => {
     try {
@@ -50,20 +50,10 @@ function ArknightsComparePage() {
       setLoading(false);
     }
   };
-
-  const handleViewResults = async () => {
-    try {
-      setLoading(true);
-      const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/arknights/view_final_order`);
-      const data = await res.json();
-      setResults({ operators: data, isPersonal: false });
-      setShowResults(true);
-    } catch (err) {
-      setError("获取总榜失败");
-    } finally {
-      setLoading(false);
-    }
+  const handleViewResults = () => {
+    navigate('/arknights/compare/result');
   };
+
 
   const handleViewPersonalResults = () => {
     if (!config) return;
@@ -81,8 +71,6 @@ function ArknightsComparePage() {
   };
 
   const handleBackToVote = () => setShowResults(false);
-
-  const handleBackToArknights = () => navigate('/arknights');
 
   useEffect(() => {
     const configURL = `${import.meta.env.VITE_BACKEND_URL}/arknights/config`;
@@ -128,10 +116,12 @@ function ArknightsComparePage() {
 
   return (
     <div className="compare-container">
+      {/* ✅ 新增返回按钮 */}
+      <div className="back-button fixed-back" onClick={() => navigate('/arknights')}>
+        ← 返回明日方舟
+      </div>
+
       <h1>干员强度对比投票</h1>
-      {!showResults && (
-        <div className="back-button fixed-back" onClick={handleBackToArknights}>← 返回明日方舟</div>
-      )}
       {loading && <div className="loading">加载中...</div>}
       {error && <div className="error">{error}</div>}
       {successMessage && <div className="success">{successMessage}</div>}
@@ -164,6 +154,7 @@ function ArknightsComparePage() {
       </div>
     </div>
   );
+
 }
 
 export default ArknightsComparePage;

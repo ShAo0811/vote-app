@@ -89,3 +89,17 @@ def get_config():
     with open(config_path, encoding='utf-8') as f:
         config_data = json.load(f)
     return jsonify(config_data)
+
+@arknights_bp.route('/reset_votes', methods=['POST'])
+def reset_votes():
+    if os.environ.get("FLASK_ENV") != "development":
+        return jsonify({'error': 'Not allowed in production'}), 403
+    try:
+        # 清空文件
+        for path in [WIN_PATH, LOSE_PATH]:
+            with open(path, 'wb') as f:
+                pickle.dump({}, f)
+        print("🧹 投票数据已重置")
+        return jsonify({'status': 'reset successful'})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500

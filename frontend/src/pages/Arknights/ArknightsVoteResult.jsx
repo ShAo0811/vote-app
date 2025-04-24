@@ -1,60 +1,84 @@
+
 import React, { useEffect, useState } from 'react';
 import '../../static/css/ArknightsVoteResult.css';
 
 function ArknightsVoteResult() {
-  const [config, setConfig] = useState(null);
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const fetchData = async () => {
+    console.log("🌐 ArknightsVoteResult 页面加载 ✅");
+    const fetchResults = async () => {
       try {
-        const [configRes, resultRes] = await Promise.all([
-          fetch('/arknights_config.json'),
-          fetch(`${import.meta.env.VITE_BACKEND_URL}/arknights/view_final_order`)
-        ]);
-        const configData = await configRes.json();
-        const resultData = await resultRes.json();
-        setConfig(configData);
-        setResults(resultData);
+        const res = await fetch(`${import.meta.env.VITE_BACKEND_URL}/arknights/view_final_order`);
+        const data = await res.json();
+        console.log("📦 获取到的数据:", data);
+        setResults(data || []);
       } catch (err) {
-        setError('加载投票结果失败');
+        console.error("❌ 获取失败:", err);
+        setError('加载失败，请稍后重试。');
       } finally {
         setLoading(false);
       }
     };
 
-    fetchData();
+    fetchResults();
+    window.scrollTo(0, 0);
   }, []);
 
-  if (loading) return <p>加载中...</p>;
-  if (error) return <p className="error">{error}</p>;
-  if (!config || results.length === 0) return <p>暂无结果</p>;
+  const handleImageError = (e) => {
+    console.error("⚠️ 头像加载失败:", e.target.src);
+    e.target.style.display = 'none';
+  };
+
+  useEffect(() => {
+    console.log("📊 当前结果数:", results.length);
+  }, [results]);
+
+  if (loading) return <div>加载中...</div>;
+  if (error) return <div>{error}</div>;
 
   return (
-    <div className="vote-results">
-      <h2>明日方舟投票总榜</h2>
-      <div className="results-list">
-        {results.map((item, index) => (
-          <div key={item.name} className="result-item">
-            <div className="rank">#{index + 1}</div>
-            <div className="item-image">
-              <img src={config.DICT_PIC_URL[item.name]} alt={item.name} />
-            </div>
-            <div className="item-details">
-              <h3>{item.name}</h3>
-              <div className="stats">
-                <span>胜率: {item.rate}%</span>
-                <span>得分: {item.score.toFixed(1)}</span>
-                <span>比较次数: {item.count}</span>
-              </div>
-            </div>
+    <div className="compare-container">
+      <div className="content">
+        <div className="vote-results">
+          <h2>干员总投票结果</h2>
+          <div className="results-list">
+            {results.map((op, index) => {
+              const name = op.name.trim();
+              const imagePath = `/images/${name}.png`;
+              const winRate = op.voteCount > 0
+                ? (((op.score + op.voteCount) / (2 * op.voteCount)) * 100).toFixed(1)
+                : 0;
+  
+              return (
+                <div key={index} className="result-item">
+                  <div className="rank">#{index + 1}</div>
+                  <div className="item-image">
+                    <img src={imagePath} alt={name} onError={handleImageError} />
+                  </div>
+                  <div className="item-details">
+                    <h3>{name}</h3>
+                    <div className="progress-container">
+                      <div className="progress-bar" style={{ width: `${winRate}%` }}></div>
+                    </div>
+                    <div className="vote-info">
+                      <span>胜率: {winRate}%</span>
+                      <span>得分: {op.score}</span>
+                      <span>比较次数: {op.voteCount}</span>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );
+  
+  
 }
 
 export default ArknightsVoteResult;

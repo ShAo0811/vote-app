@@ -24,10 +24,11 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
   min-height: 100vh;
+  width: 100%;
+  background-color: #ffffff;
+  overflow-y: auto; /* ✅ 允许滚动 */
+  display: block;   /* ✅ 不再使用 flex 居中整个页面 */
 }
 
 h1 {

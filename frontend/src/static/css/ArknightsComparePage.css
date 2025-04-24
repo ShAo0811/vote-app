@@ -120,6 +120,7 @@
 
 /* 结果页 */
 .compare-results {
+  padding-top: 40px;
   margin-top: 2rem;
   width: 100%;
 }
@@ -188,3 +189,14 @@
   background-color: #e3f2fd;
 }
 
+.back-button.fixed-back {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background-color: #f0f0f0;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+}

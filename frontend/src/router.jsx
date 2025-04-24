@@ -18,7 +18,7 @@ const routes = [
     element: <ArknightsComparePage />
   },
   {
-    path: '/arknights/result',
+    path: '/arknights/compare/result',
     element: <ArknightsVoteResult />
   }
 ];
