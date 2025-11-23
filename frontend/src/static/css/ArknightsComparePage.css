@@ -1,0 +1,290 @@
+/* 页面整体居中布局 */
+.compare-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+
+  min-height: 100vh;
+  width: 100vw;
+  padding: 2rem;
+  background-color: #f9f9f9;
+
+  /* ✅ 强制页面水平居中 */
+  box-sizing: border-box;
+}
+
+
+.compare-container h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+/* 内容区域限制最大宽度并居中 */
+.content {
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* 投票区域 */
+.compare-voting h2 {
+  text-align: center;
+  width: 100%;
+}
+
+
+.operator-comparison {
+  display: flex;
+  justify-content: center;
+  gap: 4rem; /* 原来是 3rem，加大一点更自然 */
+  margin: 2.5rem 0;
+}
+
+
+.operator-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  width: 200px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.operator-card:hover {
+  transform: scale(1.05);
+}
+
+.operator-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.operator-name {
+  margin-top: 0.8rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.vs-badge {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #666;
+  align-self: center;
+}
+
+/* ✅ 提示栏独立浮动在顶部，不挤压文字 */
+.feedback-bar {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 300px;
+  max-width: 600px;
+  padding: 0.6rem 1.2rem;
+  font-weight: bold;
+  border-radius: 6px;
+  color: #fff;
+  z-index: 1000;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.feedback-bar.success {
+  background-color: #4caf50;
+}
+
+.feedback-bar.error {
+  background-color: #f44336;
+}
+
+/* ✅ 按钮区外框 */
+.wrapper {
+  width: 90%;
+  max-width: 900px;
+  min-width: 300px;
+  margin: 0 auto;        /* 居中 */
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-top: 2rem;
+}
+
+/* ✅ 按钮统一样式（沿用原来的） */
+.action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.action-buttons button {
+  padding: 0.6rem 1.4rem;
+  font-size: 1rem;
+  border: 1px solid #1976d2;
+  border-radius: 8px;
+  background: #fff;
+  color: #1976d2;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.action-buttons button:hover:not(:disabled) {
+  background: #e3f2fd;
+  transform: translateY(-5px);
+}
+
+.action-buttons button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+  background: #f0f0f0;
+  border-color: #ccc;
+  position: relative;
+}
+
+/* ✅ 鼠标悬停未解锁按钮时显示提示 */
+.action-buttons button:disabled:hover::after {
+  content: "投票满 30 次后解锁";
+  position: absolute;
+  top: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* 结果页 */
+.compare-results {
+  padding-top: 40px;
+  margin-top: 2rem;
+  width: 100%;
+}
+
+.compare-results h2 {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.operators-ranking {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.rank-item {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.rank-number {
+  width: 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #444;
+  text-align: center;
+}
+
+.rank-item img {
+  width: 70px;
+  height: 70px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.operator-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+/* 返回按钮 */
+.back-button {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  color: #1976d2;
+  cursor: pointer;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid #1976d2;
+  border-radius: 6px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #e3f2fd;
+}
+
+.back-button.fixed-back {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background-color: #f0f0f0;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+}
+
+.page-fade-in {
+  opacity: 0;
+  transform: scale(0.95) → scale(1);
+
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-container[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #1976d2;  /* 蓝色背景 */
+  color: #fff;          /* 白色文字 */
+  padding: 6px 12px;
+  border-radius: 8px;   /* 跟按钮圆角一致 */
+  white-space: nowrap;
+  font-size: 0.85rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.tooltip-container[title]:hover::after {
+  opacity: 1;
+}

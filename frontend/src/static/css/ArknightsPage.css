@@ -1,0 +1,309 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+
+    padding: 2rem;
+    background: #ffffff;
+    text-align: center;
+    transition: opacity 0.5s ease;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+
+.logo-container {
+    margin-bottom: 2rem;
+    max-width: 300px;
+    filter: drop-shadow(0 0 10px rgba(255, 145, 0, 0.5));
+    z-index: 10
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-align: center;
+    background: linear-gradient(90deg, #ff9100, #ff5e00);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 12px rgba(255, 145, 0, 0.6);
+    margin-bottom: 1rem;
+    transition: all 0.3s ease;
+    z-index: 10
+}
+
+.title:hover {
+    text-shadow: 0 0 20px rgba(255, 145, 0, 0.9);
+    transform: scale(1.02);
+}
+
+.description {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 600px;
+    margin-bottom: 2.5rem;
+    line-height: 1.6;
+    z-index: 10
+}
+
+.buttons-container {
+    background-color: transparent;
+
+    padding: 2rem 2.5rem;
+    border-radius: 16px;
+    padding: 2rem;
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 2rem;
+    z-index: 10
+}
+
+.glow-button {
+    position: relative;
+    padding: 0.8rem 2rem;
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #ff9100;
+    background-color: transparent;
+    border: 2px solid #ff9100;
+    border-radius: 8px;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 1;
+    transition: all 0.3s ease;
+    z-index: 10
+}
+
+.button-text {
+    position: relative;
+    z-index: 10;
+}
+
+.button-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ff9100, #ff4500);
+    opacity: 0;
+    z-index: 10;
+    transition: opacity 0.3s ease;
+}
+
+.glow-button:hover .button-glow,
+.glow-active .button-glow {
+    opacity: 1;
+}
+
+.glow-button:hover {
+    color: #ffffff;
+    box-shadow: 0 0 15px rgba(255, 145, 0, 0.7);
+    transform: translateY(-2px);
+}
+
+.glow-active {
+    box-shadow: 0 0 20px rgba(255, 145, 0, 0.9);
+}
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    z-index: 10;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.back-button:hover {
+    background-color: rgba(255, 145, 0, 0.2);
+    transform: translateX(-5px);
+}
+
+.back-button span {
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .title {
+        color: #000;
+        font-weight: 800;
+        font-size: 2rem;
+        text-align: center;
+        text-shadow: 0 0 10px rgba(255, 145, 0, 0.6);
+    }
+
+    .description {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+
+    .glow-button {
+        padding: 0.7rem 1.8rem;
+        font-size: 1.1rem;
+    }
+}
+
+body {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: inset 0 0 80px rgba(255, 255, 255, 0.3);
+}
+
+.home-container::before,
+.home-container::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 20vh;
+    z-index: -1;
+    background: #f5f5f5;
+    opacity: 0.5;
+}
+
+.home-container::before {
+    top: 0;
+    background: linear-gradient(to bottom, #cccccc, #ffffff);
+}
+
+.home-container::after {
+    bottom: 0;
+    background: linear-gradient(to top, #cccccc, #ffffff);
+}
+
+.rules-box {
+    margin-top: 2.5rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    color: #333;
+    font-size: 0.95rem;
+    max-width: 600px;
+    text-align: left;
+    border: 1px solid #eee;
+    z-index: 10
+}
+
+.rules-box:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(255, 145, 0, 0.2);
+    border-color: #ff9100;
+}
+
+.rules-box h3 {
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    color: #ff9100;
+    font-size: 1.1rem;
+}
+
+.rules-box ul {
+    padding-left: 1.2rem;
+    margin: 0;
+}
+
+.rules-box li {
+    margin-bottom: 0.5rem;
+    line-height: 1.5;
+    list-style-type: disc;
+}
+
+.originiums-container {
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: 2rem auto;
+    cursor: pointer;
+    z-index: 0;
+}
+
+.originiums-outer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(45deg);
+    border: 10px solid #ccc;
+    background: transparent;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+    z-index: 0;
+}
+
+.originiums-container:hover .originiums-outer {
+    transform: rotate(45deg) scale(4.5);
+    transition: transform 0.5s ease;
+}
+
+.originiums-container.expand .originiums-outer {
+    transform: rotate(45deg) scale(20);
+    transition: transform 1s ease;
+}
+
+.originiums-inner {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+    border: 10px solid #000;
+    background: transparent;
+    transform: rotate(45deg);
+    box-sizing: border-box;
+    z-index: 0;
+    transition: transform 0.5s ease;
+}
+
+.originiums-container:hover .originiums-inner {
+    transform: rotate(135deg) scale(1.05);
+}
+
+.originiums-container.expand .originiums-inner {
+    transform: rotate(45deg) scale(20);
+    transition: transform 1s ease;
+}
+
+.originiums-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #000;
+    font-size: 1.1rem;
+    font-weight: bold;
+    user-select: none;
+    white-space: nowrap;
+    z-index: 0;
+    transition: opacity 0.6s ease;
+}
+
+.originiums-container.expand .originiums-text {
+    opacity: 0;
+}

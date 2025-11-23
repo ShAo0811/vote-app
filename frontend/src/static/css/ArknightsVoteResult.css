@@ -1,0 +1,118 @@
+.vote-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;         /* ✅ 横向居中 */
+  justify-content: flex-start;
+  padding: 2rem;
+  min-height: 100vh;
+  background-color: #f8fafc;
+  box-sizing: border-box;
+}
+
+
+.vote-results h2 {
+  margin-top: 0;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+}
+
+.no-votes {
+  color: #666;
+  font-style: italic;
+  text-align: center;
+  padding: 20px 0;
+}
+
+.results-list {
+  width: 100%;
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  align-items: center;         /* ✅ 内容居中 */
+}
+
+
+.result-item {
+  width: 100%;
+  max-width: 640px;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+
+.result-item:last-child {
+  border-bottom: none;
+}
+
+.rank {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  width: 40px;
+  text-align: center;
+}
+
+.item-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 15px;
+}
+
+.item-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 20%;
+}
+
+.item-details {
+  flex: 1;
+}
+
+.item-details h3 {
+  margin: 0 0 10px 0;
+  color: #333;
+}
+
+.progress-container {
+  height: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-bottom: 5px;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: #4c8bf5;
+  transition: width 0.5s ease;
+}
+
+.vote-info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #666;
+}
+
+/* 前三名特殊样式 */
+.result-item:nth-child(1) .rank {
+  color: gold;
+}
+
+.result-item:nth-child(2) .rank {
+  color: silver;
+}
+
+.result-item:nth-child(3) .rank {
+  color: #cd7f32;
+  /* bronze */
+}
